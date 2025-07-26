@@ -1,0 +1,108 @@
+/* Apply a clean, modern font */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #1e1b2e, #312244); /* Elegant dark gradient */
+  color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Main container styling */
+.container {
+  background-color: #2a2a40;
+  border-radius: 15px;
+  padding: 40px 30px;
+  max-width: 600px;
+  width: 95%;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  text-align: center;
+}
+
+/* Title styling */
+h1 {
+  margin-bottom: 25px;
+  font-size: 26px;
+  color: #e4dfff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* File input styling */
+#imageUpload {
+  padding: 12px;
+  border-radius: 10px;
+  background-color: #3e3c5a;
+  border: 2px dashed #6a5acd;
+  color: #ddd;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* Hide default file input but keep label area */
+#imageUpload::-webkit-file-upload-button {
+  visibility: hidden;
+}
+#imageUpload::before {
+  content: '📁 Choose or Drag Image';
+  display: inline-block;
+  background: #6a5acd;
+  color: white;
+  border-radius: 8px;
+  padding: 8px 15px;
+  cursor: pointer;
+  font-weight: bold;
+}
+#imageUpload:hover::before {
+  background: #7a6cff;
+}
+
+/* Generate button */
+#generateBtn {
+  background: #8e44ad;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+#generateBtn:hover {
+  background: #a569bd;
+}
+
+/* Output display */
+#output {
+  margin-top: 30px;
+  text-align: center;
+}
+
+#uploadedImage {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+#captionText {
+  font-size: 16px;
+  color: #ffffffcc;
+  background: #3e3c5a;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+/* Optional: Make input and button smooth on focus */
+input:focus, button:focus {
+  outline: none;
+  box-shadow: 0 0 5px #a569bd;
+}
