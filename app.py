@@ -1,13 +1,11 @@
-
-
 import base64
 import requests
 import mimetypes
 import os
 from dotenv import load_dotenv
-
-
 from flask import Flask, request, jsonify, render_template
+
+# ✅ Load environment variables
 load_dotenv() 
 app = Flask(__name__)
 
@@ -65,6 +63,15 @@ def generate_caption():
 
     try:
         response_data = response.json()
+        print("🔍 Gemini API raw response:", response_data)  # Debug log
+
+        # Check if candidates exist
+        if "candidates" not in response_data:
+            return jsonify({
+                "error": "❌ Gemini API did not return any caption candidates. Please check your API key or usage quota.",
+                "details": response_data  # Helpful for debugging
+            }), 500
+
         caption = response_data["candidates"][0]["content"]["parts"][0]["text"]
 
         # ✅ Return base64 image + multiple captions
@@ -75,9 +82,9 @@ def generate_caption():
         })
 
     except Exception as e:
+        print("❌ Exception occurred:", str(e))
         return jsonify({"error": f"❌ Failed to generate caption. {str(e)}"}), 500
 
 if __name__ == '__main__':
-    import os
-    port = int(os.environ.get("PORT", 5000))  # Replit sets PORT, fallback to 5000 for local
+    port = int(os.environ.get("PORT", 5000))  # Use port from environment or default to 5000
     app.run(host='0.0.0.0', port=port)
